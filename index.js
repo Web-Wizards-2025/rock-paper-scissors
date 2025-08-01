@@ -1,11 +1,9 @@
 "use strict";
 
-const choices = ["Rock", "Paper", "Scissors"];
+const choices = ["ROCK", "PAPER", "SCISSORS"];
 
 const computerPlay = (choices) =>
   choices[Math.floor(choices.length * Math.random())];
-
-const validChoices = ["ROCK", "PAPER", "SCISSORS"];
 
 function getPlayerInput() {
   const playerInput = prompt("Choose: Rock, Paper or Scissors");
@@ -15,7 +13,7 @@ function getPlayerInput() {
   }
   const playerSelection = playerInput.trim().toUpperCase();
 
-  if (!validChoices.includes(playerSelection)) {
+  if (!choices.includes(playerSelection)) {
     console.log("Invalid choice! Please type: Rock, Paper or Scissors");
     getPlayerInput();
   }
