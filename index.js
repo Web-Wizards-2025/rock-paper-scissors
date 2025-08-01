@@ -68,6 +68,10 @@ function playRound(playerSelection, computerSelection) {
   return roundResult;
 }
 
+const choices = ['Rock', 'Paper', 'Scissors'];
+
+const computerPlay = choices => choices[Math.floor(choices.length * Math.random())];
+
 function game() {
   alert(
       "Defeat the Evil AI in 5 rounds of Rock Paper Scissors!\n" 
