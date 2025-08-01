@@ -1,7 +1,5 @@
 'use strict'
 
-var choices = ['Rock', 'Paper', 'Scissors'];
+const choices = ['Rock', 'Paper', 'Scissors'];
 
-function computerPlay(choices) {
-    return choices[Math.floor(choices.length * Math.random())];
-}
+const computerPlay = choices => choices[Math.floor(choices.length * Math.random())];
