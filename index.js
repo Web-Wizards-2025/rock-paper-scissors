@@ -24,12 +24,14 @@ function getPlayerInput() {
 function checkWinner(playerSelection, computerSelection) {
   let result;
 
+  console.log(playerSelection, computerSelection);
   if (playerSelection === computerSelection) {
     result = {
       winner: null,
       loser: null,
       reason: `The Round Ended in a TIE! Your choice: ${playerSelection} is equal to Evil AI choice: ${computerSelection}`,
     };
+    return result;
   }
 
   if (
@@ -52,6 +54,9 @@ function checkWinner(playerSelection, computerSelection) {
 
   return result;
 }
+
+const computerSelection = computerPlay(choices);
+const playerSelection = getPlayerInput();
 
 function playRound(playerSelection, computerSelection) {
   const roundResult = checkWinner(playerSelection, computerSelection);
