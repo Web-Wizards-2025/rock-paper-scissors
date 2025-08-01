@@ -67,3 +67,40 @@ function playRound(playerSelection, computerSelection) {
   console.log(roundResult.reason);
   return roundResult;
 }
+
+function game() {
+  alert(
+    "Welcome to Rock, Paper, Scissors!\nFirst to 5 valid rounds. Good luck!"
+  );
+  let playerScore = 0;
+  let computerScore = 0;
+  let roundsPlayed = 0;
+
+  while (roundsPlayed < 5) {
+    const playerSelection = getPlayerSelection();
+    const computerSelection = computerPlay();
+    const round = playRound(playerSelection, computerSelection);
+
+    alert(
+      `Round ${
+        roundsPlayed + 1
+      }\nYou chose: ${playerSelection}\nComputer chose: ${computerSelection}\n${
+        round.message
+      }`
+    );
+
+    if (round.result === "Win") playerScore++;
+    if (round.result === "Lose") computerScore++;
+    if (round.result !== "Tie") roundsPlayed++;
+  }
+
+  let finalMsg = `Game Over!\nFinal Score:\nYou: ${playerScore}\nComputer: ${computerScore}\n`;
+  if (playerScore > computerScore) {
+    finalMsg += "Congratulations, you win the game!";
+  } else if (computerScore > playerScore) {
+    finalMsg += "You lose! The AI takes over the world. 😈";
+  } else {
+    finalMsg += "It's a tie! The battle continues...";
+  }
+  alert(finalMsg);
+}
