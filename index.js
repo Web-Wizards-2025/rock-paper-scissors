@@ -79,28 +79,29 @@ function game() {
   while (roundsPlayed < 5) {
     const playerSelection = getPlayerSelection();
     const computerSelection = computerPlay();
-    const round = playRound(playerSelection, computerSelection);
+    const currentRound = playRound(playerSelection, computerSelection);
 
-    alert(
+    console.log(
       `Round ${
         roundsPlayed + 1
       }\nYou chose: ${playerSelection}\nComputer chose: ${computerSelection}\n${
-        round.message
+        currentRound.message
       }`
     );
 
-    if (round.result === "Win") playerScore++;
-    if (round.result === "Lose") computerScore++;
-    if (round.result !== "Tie") roundsPlayed++;
+    if (currentRound.result === "Win") playerScore++;
+    if (currentRound.result === "Lose") computerScore++;
+    // Only count non-ties
+    if (currentRound.result !== "Tie") roundsPlayed++;
   }
 
-  let finalMsg = `Game Over!\nFinal Score:\nYou: ${playerScore}\nComputer: ${computerScore}\n`;
+  let finalMessage = `Game Over!\nFinal Score:\nYou: ${playerScore}\nComputer: ${computerScore}\n`;
   if (playerScore > computerScore) {
-    finalMsg += "Congratulations, you win the game!";
+    finalMessage += "Congratulations, you win the game!";
   } else if (computerScore > playerScore) {
-    finalMsg += "You lose! The AI takes over the world. 😈";
+    finalMessage += "You lose! The AI takes over the world. 😈";
   } else {
-    finalMsg += "It's a tie! The battle continues...";
+    finalMessage += "It's a tie! The battle continues...";
   }
-  alert(finalMsg);
+  console.log(finalMessage);
 }
