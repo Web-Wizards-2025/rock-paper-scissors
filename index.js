@@ -67,5 +67,3 @@ function playRound(playerSelection, computerSelection) {
   console.log(roundResult.reason);
   return roundResult;
 }
-
-playRound(playerSelection, computerSelection);
