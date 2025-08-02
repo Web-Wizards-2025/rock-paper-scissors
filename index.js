@@ -60,17 +60,8 @@ function checkWinner(playerSelection, computerSelection) {
   };
 }
 
-const computerSelection = computerPlay(choices);
-const playerSelection = getPlayerInput();
-
 function playRound(playerSelection, computerSelection) {
-  if (!playerSelection || !choices.includes(playerSelection)) {
-    return;
-  }
-  const roundResult = checkWinner(playerSelection, computerSelection);
-
-  console.log(roundResult.reason);
-  return roundResult;
+  return checkWinner(playerSelection, computerSelection);
 }
 
 function game() {
