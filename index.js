@@ -68,40 +68,61 @@ function playRound(playerSelection, computerSelection) {
   return roundResult;
 }
 
+const choices = ['Rock', 'Paper', 'Scissors'];
+
+const computerPlay = choices => choices[Math.floor(choices.length * Math.random())];
+
 function game() {
   alert(
-    "Welcome to Rock, Paper, Scissors!\nFirst to 5 valid rounds. Good luck!"
+      "Defeat the Evil AI in 5 rounds of Rock Paper Scissors!\n" 
   );
+
   let playerScore = 0;
   let computerScore = 0;
-  let roundsPlayed = 0;
+  let roundCount = 1;
 
-  while (roundsPlayed < 5) {
-    const playerSelection = getPlayerSelection();
-    const computerSelection = computerPlay();
-    const currentRound = playRound(playerSelection, computerSelection);
+  while (playerScore < 3 && computerScore < 3 && roundCount <= 5) {
+    console.log(`\n======= ROUND ${roundCount} =======`);
 
-    console.log(
-      `Round ${
-        roundsPlayed + 1
-      }\nYou chose: ${playerSelection}\nComputer chose: ${computerSelection}\n${
-        currentRound.message
-      }`
-    );
+    const playerChoice = getPlayerInput();
+    if (playerChoice === null) {
+      console.log("You surrendered! The AI conquers Earth!");
+      return;
+    }
 
-    if (currentRound.result === "Win") playerScore++;
-    if (currentRound.result === "Lose") computerScore++;
-    // Only count non-ties
-    if (currentRound.result !== "Tie") roundsPlayed++;
+    const computerChoice = computerPlay();
+    const roundResult = playRound(playerChoice, computerChoice);
+
+    console.log(`\nYour choice: ${playerChoice}`);
+    console.log(`Evil AI's choice: ${computerChoice}`);
+    console.log(`RESULT: ${roundResult.message}`);
+
+    if (roundResult.result === "Win") playerScore++;
+    if (roundResult.result === "Lose") computerScore++;
+
+    console.log(`SCORE: You ${playerScore} - ${computerScore} AI`);
+    roundCount++;
   }
 
-  let finalMessage = `Game Over!\nFinal Score:\nYou: ${playerScore}\nComputer: ${computerScore}\n`;
+  // Final outcome determination
+  console.log("\n======== GAME OVER ========");
+  console.log(`FINAL SCORE: You ${playerScore} - ${computerScore} AI`);
+
   if (playerScore > computerScore) {
-    finalMessage += "Congratulations, you win the game!";
+    console.log("You saved humanity");
+    alert(
+      "HUMANITY IS SAVED!\n\n" 
+    );
   } else if (computerScore > playerScore) {
-    finalMessage += "You lose! The AI takes over the world. 😈";
+    console.log("The AI won");
+    alert(
+      "☠️ THE AI HAS CONQUERED EARTH! ☠️\n\n" 
+    );
   } else {
-    finalMessage += "It's a tie! The battle continues...";
+    console.log("The battle continues...");
+    alert(
+        "Neither side achieved victory. Prepare for the next battle!"
+    );
   }
-  console.log(finalMessage);
 }
+
