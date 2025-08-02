@@ -68,10 +68,6 @@ function playRound(playerSelection, computerSelection) {
   return roundResult;
 }
 
-const choices = ['Rock', 'Paper', 'Scissors'];
-
-const computerPlay = choices => choices[Math.floor(choices.length * Math.random())];
-
 function game() {
   alert(
     "Welcome to Rock, Paper, Scissors!\nFirst to 5 valid rounds. Good luck!"
