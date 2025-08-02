@@ -6,66 +6,61 @@ const computerPlay = (choices) =>
   choices[Math.floor(choices.length * Math.random())];
 
 function getPlayerInput() {
-  const playerInput = prompt("Choose: Rock, Paper or Scissors");
-  if (!playerInput) {
-    console.log("You have canceled the game!");
-    return;
-  }
-  const playerSelection = playerInput.trim().toUpperCase();
+  while (true) {
+    const playerInput = prompt(
+      "Choose your weapon:\nRock, Paper, or Scissors?"
+    );
 
-  if (!choices.includes(playerSelection)) {
-    console.log("Invalid choice! Please type: Rock, Paper or Scissors");
-    getPlayerInput();
+    if (playerInput === null) {
+      console.log("You have canceled the game!");
+      return null;
+    }
+
+    const playerSelection = playerInput.trim().toUpperCase();
+
+    if (playerSelection === "") {
+      console.log("No input provided.");
+      continue;
+    }
+
+    if (!choices.includes(playerSelection)) {
+      console.log("Invalid choice! Please enter: Rock, Paper, or Scissors");
+      continue;
+    }
+
+    return playerSelection;
   }
-  return playerSelection;
 }
 
-//Checks the user's and computer's choices and produces an object with corresponding results to the match
 function checkWinner(playerSelection, computerSelection) {
-  let result;
-
-  console.log(playerSelection, computerSelection);
   if (playerSelection === computerSelection) {
-    result = {
-      winner: null,
-      loser: null,
-      reason: `The Round Ended in a TIE! Your choice: ${playerSelection} is equal to Evil AI choice: ${computerSelection}`,
-    };
-    return result;
-  }
-
-  if (
-    (playerSelection === "ROCK" && computerSelection === "SCISSORS") ||
-    (playerSelection === "PAPER" && computerSelection === "ROCK") ||
-    (playerSelection === "SCISSORS" && computerSelection === "PAPER")
-  ) {
-    result = {
-      winner: "Player",
-      loser: "Computer",
-      reason: `You WIN! Your choice: ${playerSelection} beats Evil AI choice: ${computerSelection}`,
-    };
-  } else {
-    result = {
-      winner: "Computer",
-      loser: "Player",
-      reason: `You LOST! Evil AI choice: ${computerSelection} beats Your choice: ${playerSelection}`,
+    return {
+      message: `It's a TIE! Both chose ${playerSelection}`,
+      result: "Tie",
     };
   }
 
-  return result;
+  const winConditions = {
+    ROCK: "SCISSORS",
+    PAPER: "ROCK",
+    SCISSORS: "PAPER",
+  };
+
+  if (winConditions[playerSelection] === computerSelection) {
+    return {
+      message: `You won! You chose: ${playerSelection}, which beats ${computerSelection}`,
+      result: "Win",
+    };
+  }
+
+  return {
+    message: `You lose! You chose ${computerSelection}, which loses against ${playerSelection}`,
+    result: "Lose",
+  };
 }
-
-const computerSelection = computerPlay(choices);
-const playerSelection = getPlayerInput();
 
 function playRound(playerSelection, computerSelection) {
-  if (!playerSelection || !choices.includes(playerSelection)) {
-    return;
-  }
-  const roundResult = checkWinner(playerSelection, computerSelection);
-
-  console.log(roundResult.reason);
-  return roundResult;
+  return checkWinner(playerSelection, computerSelection);
 }
 
 function game() {
