@@ -2,8 +2,7 @@
 
 const choices = ["ROCK", "PAPER", "SCISSORS"];
 
-const computerPlay = (choices) =>
-  choices[Math.floor(choices.length * Math.random())];
+const computerPlay = () => choices[Math.floor(Math.random() * choices.length)];
 
 function getPlayerInput() {
   while (true) {
@@ -19,12 +18,12 @@ function getPlayerInput() {
     const playerSelection = playerInput.trim().toUpperCase();
 
     if (playerSelection === "") {
-      console.log("No input provided.");
+      console.log("⚠️ No input provided. Please try again.");
       continue;
     }
 
     if (!choices.includes(playerSelection)) {
-      console.log("Invalid choice! Please enter: Rock, Paper, or Scissors");
+      console.log("❌ Invalid choice! Please enter: Rock, Paper, or Scissors");
       continue;
     }
 
@@ -35,7 +34,7 @@ function getPlayerInput() {
 function checkWinner(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return {
-      message: `It's a TIE! Both chose ${playerSelection}`,
+      message: `TIE! ⚔️ Both chose ${playerSelection}`,
       result: "Tie",
     };
   }
@@ -48,13 +47,13 @@ function checkWinner(playerSelection, computerSelection) {
 
   if (winConditions[playerSelection] === computerSelection) {
     return {
-      message: `You won! You chose: ${playerSelection}, which beats ${computerSelection}`,
+      message: `YOU WIN! 🎉 ${playerSelection} beats ${computerSelection}`,
       result: "Win",
     };
   }
 
   return {
-    message: `You lose! You chose ${computerSelection}, which loses against ${playerSelection}`,
+    message: `YOU LOSE! 💀 ${computerSelection} beats ${playerSelection}`,
     result: "Lose",
   };
 }
@@ -64,7 +63,18 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  alert("Defeat the Evil AI in 5 rounds of Rock Paper Scissors!\n");
+  alert(
+    "🌍 THE FATE OF THE WORLD HANGS IN THE BALANCE! 🌍\n\n" +
+      "Defeat the Evil AI in 5 rounds of Rock Paper Scissors!\n" +
+      "First to win 3 rounds decides the fate of humanity!\n\n" +
+      "========================================\n" +
+      "HOW TO PLAY:\n" +
+      "- Enter 'Rock', 'Paper', or 'Scissors'\n" +
+      "- Win 3 rounds before the AI does\n" +
+      "- CANCEL = surrender to the AI\n" +
+      "========================================\n\n" +
+      "Good luck, human! 🫡"
+  );
 
   let playerScore = 0;
   let computerScore = 0;
@@ -75,7 +85,7 @@ function game() {
 
     const playerChoice = getPlayerInput();
     if (playerChoice === null) {
-      console.log("You surrendered! The AI conquers Earth!");
+      console.log("🚨 You surrendered! The AI conquers Earth!");
       return;
     }
 
@@ -93,18 +103,28 @@ function game() {
     roundCount++;
   }
 
-  // Final outcome determination
   console.log("\n======== GAME OVER ========");
   console.log(`FINAL SCORE: You ${playerScore} - ${computerScore} AI`);
 
   if (playerScore > computerScore) {
-    console.log("You saved humanity");
-    alert("HUMANITY IS SAVED!\n\n");
+    console.log("✅ VICTORY! You saved humanity from the AI overlords!");
+    alert(
+      "🌎 HUMANITY IS SAVED! 🌎\n\n" +
+        "You defeated the Evil AI! The world is safe... for now."
+    );
   } else if (computerScore > playerScore) {
-    console.log("The AI won");
-    alert("☠️ THE AI HAS CONQUERED EARTH! ☠️\n\n");
+    console.log("❌ DOOM! The AI has enslaved humanity!");
+    alert(
+      "☠️ THE AI HAS CONQUERED EARTH! ☠️\n\n" +
+        "All hope is lost... machines now rule the world."
+    );
   } else {
-    console.log("The battle continues...");
-    alert("Neither side achieved victory. Prepare for the next battle!");
+    console.log("🟡 STALEMATE! The battle continues...");
+    alert(
+      "⚔️ THE WAR RAGES ON! ⚔️\n\n" +
+        "Neither side achieved victory. Prepare for the next battle!"
+    );
   }
 }
+
+game();
