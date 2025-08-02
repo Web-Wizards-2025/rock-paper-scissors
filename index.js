@@ -68,14 +68,8 @@ function playRound(playerSelection, computerSelection) {
   return roundResult;
 }
 
-const choices = ['Rock', 'Paper', 'Scissors'];
-
-const computerPlay = choices => choices[Math.floor(choices.length * Math.random())];
-
 function game() {
-  alert(
-      "Defeat the Evil AI in 5 rounds of Rock Paper Scissors!\n" 
-  );
+  alert("Defeat the Evil AI in 5 rounds of Rock Paper Scissors!\n");
 
   let playerScore = 0;
   let computerScore = 0;
@@ -110,19 +104,12 @@ function game() {
 
   if (playerScore > computerScore) {
     console.log("You saved humanity");
-    alert(
-      "HUMANITY IS SAVED!\n\n" 
-    );
+    alert("HUMANITY IS SAVED!\n\n");
   } else if (computerScore > playerScore) {
     console.log("The AI won");
-    alert(
-      "☠️ THE AI HAS CONQUERED EARTH! ☠️\n\n" 
-    );
+    alert("☠️ THE AI HAS CONQUERED EARTH! ☠️\n\n");
   } else {
     console.log("The battle continues...");
-    alert(
-        "Neither side achieved victory. Prepare for the next battle!"
-    );
+    alert("Neither side achieved victory. Prepare for the next battle!");
   }
 }
-
