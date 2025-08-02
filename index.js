@@ -32,7 +32,6 @@ function getPlayerInput() {
   }
 }
 
-//Checks the user's and computer's choices and produces an object with corresponding results to the match
 function checkWinner(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return {
