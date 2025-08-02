@@ -6,18 +6,30 @@ const computerPlay = (choices) =>
   choices[Math.floor(choices.length * Math.random())];
 
 function getPlayerInput() {
-  const playerInput = prompt("Choose: Rock, Paper or Scissors");
-  if (!playerInput) {
-    console.log("You have canceled the game!");
-    return;
-  }
-  const playerSelection = playerInput.trim().toUpperCase();
+  while (true) {
+    const playerInput = prompt(
+      "Choose your weapon:\nRock, Paper, or Scissors?"
+    );
 
-  if (!choices.includes(playerSelection)) {
-    console.log("Invalid choice! Please type: Rock, Paper or Scissors");
-    getPlayerInput();
+    if (playerInput === null) {
+      console.log("You have canceled the game!");
+      return null;
+    }
+
+    const playerSelection = playerInput.trim().toUpperCase();
+
+    if (playerSelection === "") {
+      console.log("No input provided.");
+      continue;
+    }
+
+    if (!choices.includes(playerSelection)) {
+      console.log("Invalid choice! Please enter: Rock, Paper, or Scissors");
+      continue;
+    }
+
+    return playerSelection;
   }
-  return playerSelection;
 }
 
 //Checks the user's and computer's choices and produces an object with corresponding results to the match
