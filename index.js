@@ -59,7 +59,7 @@ const computerSelection = computerPlay(choices);
 const playerSelection = getPlayerInput();
 
 function playRound(playerSelection, computerSelection) {
-  if (!playerSelection) {
+  if (!playerSelection || !choices.includes(playerSelection)) {
     return;
   }
   const roundResult = checkWinner(playerSelection, computerSelection);
@@ -67,3 +67,5 @@ function playRound(playerSelection, computerSelection) {
   console.log(roundResult.reason);
   return roundResult;
 }
+
+playRound(playerSelection, computerSelection);
