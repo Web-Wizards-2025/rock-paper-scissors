@@ -68,10 +68,8 @@ alert(
     "👉 How to open the console:\n" +
     "- Chrome/Edge: Press Ctrl+Shift+J (Windows) or Cmd+Option+J (Mac)\n" +
     "- Firefox: Press Ctrl+Shift+K (Windows) or Cmd+Option+K (Mac)\n\n" +
-    "- F12 key also works in most browsers.\n\n" +
-    "After the developer tools panel is open, navigate to the 'console' tab if you're not already in there, that's where you will see the game outputs.\n" +
-    "Once you're in the 'console' tab, you can start the game by clicking 'OK' on this alert.\n\n" +
-    "Once the game starts, follow the prompts and enter your guesses."
+    "Once the console is opened, you can start the game by clicking 'OK' on this alert.\n\n" +
+    "Once the game starts, follow the prompts and enter your guesses. Good luck!"
 );
 
 alert(
