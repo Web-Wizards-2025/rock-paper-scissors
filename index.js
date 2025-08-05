@@ -62,20 +62,32 @@ function playRound(playerSelection, computerSelection) {
   return checkWinner(playerSelection, computerSelection);
 }
 
-function game() {
-  alert(
-    "🌍 THE FATE OF THE WORLD HANGS IN THE BALANCE! 🌍\n\n" +
-      "Defeat the Evil AI in 5 rounds of Rock Paper Scissors!\n" +
-      "First to win 3 rounds decides the fate of humanity!\n\n" +
-      "========================================\n" +
-      "HOW TO PLAY:\n" +
-      "- Enter 'Rock', 'Paper', or 'Scissors'\n" +
-      "- Win 3 rounds before the AI does\n" +
-      "- CANCEL = surrender to the AI\n" +
-      "========================================\n\n" +
-      "Good luck, human! 🫡"
-  );
+alert(
+  "Welcome to rock paper scissors!\n\n" +
+    "To play, you need to open the browser console to see game results and feedback.\n\n" +
+    "👉 How to open the console:\n" +
+    "- Chrome/Edge: Press Ctrl+Shift+J (Windows) or Cmd+Option+J (Mac)\n" +
+    "- Firefox: Press Ctrl+Shift+K (Windows) or Cmd+Option+K (Mac)\n\n" +
+    "- F12 key also works in most browsers.\n\n" +
+    "After the developer tools panel is open, navigate to the 'console' tab if you're not already in there, that's where you will see the game outputs.\n" +
+    "Once you're in the 'console' tab, you can start the game by clicking 'OK' on this alert.\n\n" +
+    "Once the game starts, follow the prompts and enter your guesses."
+);
 
+alert(
+  "🌍 THE FATE OF THE WORLD HANGS IN THE BALANCE! 🌍\n\n" +
+    "Defeat the Evil AI in 5 rounds of Rock Paper Scissors!\n" +
+    "First to win 3 rounds decides the fate of humanity!\n\n" +
+    "========================================\n" +
+    "HOW TO PLAY:\n" +
+    "- Enter 'Rock', 'Paper', or 'Scissors'\n" +
+    "- Win 3 rounds before the AI does\n" +
+    "- CANCEL = surrender to the AI\n" +
+    "========================================\n\n" +
+    "Good luck, human! 🫡"
+);
+
+function game() {
   let playerScore = 0;
   let computerScore = 0;
   let roundCount = 1;
@@ -127,4 +139,4 @@ function game() {
   }
 }
 
-game();
+setTimeout(game, 1);
