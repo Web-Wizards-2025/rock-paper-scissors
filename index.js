@@ -85,6 +85,8 @@ alert(
     "Good luck, human! 🫡"
 );
 
+setTimeout(game, 1);
+
 function game() {
   let playerScore = 0;
   let computerScore = 0;
@@ -136,5 +138,3 @@ function game() {
     );
   }
 }
-
-setTimeout(game, 1);
